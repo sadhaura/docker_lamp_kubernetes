@@ -14,7 +14,7 @@ Clone this repository on your local computer.
 
 1. git clone https://github.com/sadhaura/docker_lamp_kubernetes.git
 
-2. cd docker_lamp/
+2. cd docker_lamp_kubernetes/
 
 3. docker-compose up -d
 
