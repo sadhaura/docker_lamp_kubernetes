@@ -1,0 +1,61 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: my-php7-server
+  labels:
+    app: my-php7-server
+spec:
+  template:
+    metadata:
+      labels:
+        app: my-php7-server
+    spec:
+      containers:
+      - name: my-php7-server
+        image: 2034/php-docker:2
+        env:
+        - name: MYSQL_HOST
+          valueFrom:
+            configMapKeyRef:
+              # The ConfigMap containing the value you want to assign to SPECIAL_LEVEL_KEY
+              name: configmap
+              # Specify the key associated with the value
+              key: MYSQL_HOST
+        - name: MYSQL_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              # The ConfigMap containing the value you want to assign to SPECIAL_LEVEL_KEY
+              name: configmap
+              # Specify the key associated with the value
+              key: MYSQL_DATABASE
+        - name: MYSQL_USER
+          valueFrom:
+            configMapKeyRef:
+              # The ConfigMap containing the value you want to assign to SPECIAL_LEVEL_KEY
+              name: configmap
+              # Specify the key associated with the value
+              key: MYSQL_USER
+
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: secret
+              key: MYSQL_PASSWORD
+
+        ports:
+        - containerPort: 80
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: my-php7-server
+spec:
+  type: LoadBalancer
+  selector:
+    app: my-php7-server
+  ports:
+    - name: php
+      protocol: TCP
+      port: 80
+      targetPort: 80
+

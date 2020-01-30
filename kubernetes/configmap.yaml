@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap
+data:
+  MYSQL_HOST: mysql-service
+  MYSQL_DATABASE: T1
+  MYSQL_USER: user1
