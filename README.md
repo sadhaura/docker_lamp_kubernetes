@@ -32,6 +32,7 @@ Requirements:-
 
 clone the repository 
 git clone https://github.com/sadhaura/docker_lamp_kubernetes.git
+
 cd docker_lamp_kubernetes/kubernetes
 
 run the below command :-
