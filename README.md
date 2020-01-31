@@ -33,9 +33,9 @@ Requirements:-
 clone the repository 
 git clone https://github.com/sadhaura/docker_lamp_kubernetes.git
 
-cd docker_lamp_kubernetes/kubernetes
+2. cd docker_lamp_kubernetes/kubernetes
 
-run the below command :-
+3. run the below command :-
 
 kubectl create -f apache.yml,configmap.yml,secret.yml,mysql.yml,volume.yml
 
